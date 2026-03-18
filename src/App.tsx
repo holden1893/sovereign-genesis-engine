@@ -12,6 +12,7 @@ import { Footer } from '@/sections/Footer';
 import type { GamePackage, GameSpec } from '@/types/game';
 import { generateGame } from '@/lib/gameGenerator';
 import { runSimulation } from '@/lib/simulationEngine';
+import { recordSimulation } from '@/sections/TrainingMetrics';
 
 function App() {
   const [currentSpec, setCurrentSpec] = useState<Partial<GameSpec> | null>(null);
@@ -40,6 +41,9 @@ function App() {
                     : spec.genre === "survival" ? 0.4 : 0.2,
       seed: Date.now(),
     });
+
+    // Record sim result for training metrics
+    recordSimulation({ ...simResult, genre: spec.genre, setting: spec.setting });
 
     // Small pause — let user see simulation completed
     await new Promise(r => setTimeout(r, 600));
