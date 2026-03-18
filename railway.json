@@ -4,6 +4,7 @@
   },
   "deploy": {
     "startCommand": "node server.mjs",
-    "healthcheckPath": "/api/status"
+    "healthcheckPath": "/api/status",
+    "healthcheckTimeout": 300
   }
 }
