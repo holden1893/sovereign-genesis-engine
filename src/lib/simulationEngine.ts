@@ -505,7 +505,7 @@ function synthesizeNarrative(result: Omit<SimulationResult, 'emergentNarrative'>
   const deathEvents = result.keyEvents.filter(e => e.type === 'death').length;
   const discoveries = result.keyEvents.filter(e => e.type === 'discovery').length;
 
-  const agentIds = Array.from(result.agentHistories.keys());
+  const _agentIds = Array.from(result.agentHistories.keys());
   const dominant = result.dominantFaction;
 
   let narrative = '';
