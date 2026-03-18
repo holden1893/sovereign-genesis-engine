@@ -26,10 +26,10 @@ async function ensureGamesDir() {
   try {
     await fs.mkdir(GAMES_DIR, { recursive: true });
   } catch (err) {
-    console.error('Error creating games directory:', err);
+    console.warn('Games dir not writable — running in stateless mode');
   }
 }
-ensureGamesDir();
+ensureGamesDir().catch(() => console.warn('Stateless mode active'));
 
 // Get API status
 app.get('/api/status', (req, res) => {
