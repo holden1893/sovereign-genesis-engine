@@ -5,6 +5,7 @@
 // ============================================================
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { recordSimulation } from "@/sections/TrainingMetrics";
 
 // ─── Types (mirrors simulationEngine.ts) ───────────────────
 
@@ -275,6 +276,20 @@ export default function SimulationVisualizer({ spec }: { spec?: Partial<GameSpec
   const [_currentAgents, setCurrentAgents] = useState<Agent[]>([]);
   const tickRef = useRef(0);
   const snapshotsRef = useRef<Agent[][]>([]);
+
+  // Wire sim completion into training loop
+  useEffect(() => {
+    recordSimulation({
+      survivorCount: simResult.survivorCount,
+      agentCount: simResult.agentCount,
+      narrativeThreads: simResult.narrativeThreads,
+      recommendations: simResult.recommendations,
+      keyEvents: simResult.keyEvents,
+      dominantFaction: simResult.dominantFaction,
+      genre: defaultSpec.genre,
+      setting: defaultSpec.setting,
+    });
+  }, [isDone]);
 
   const defaultSpec: GameSpec = {
     title: spec?.title ?? "SOVEREIGN GENESIS",
