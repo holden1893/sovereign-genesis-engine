@@ -784,6 +784,48 @@ app.get('/api/games/:id', async (req, res) => {
 });
 
 // Serve static files in production
+
+// ── NEXUS ENGINE PROXY ────────────────────────────────────────
+const NEXUS_URL = process.env.NEXUS_API_URL || 'http://localhost:8000';
+
+app.post('/api/nexus/create', async (req, res) => {
+  try {
+    const r = await fetch(NEXUS_URL + '/create', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body)
+    });
+    const data = await r.json();
+    res.json(data);
+  } catch (err) {
+    res.status(503).json({ error: 'NEXUS offline', fallback: true });
+  }
+});
+
+app.post('/api/nexus/step', async (req, res) => {
+  try {
+    const r = await fetch(NEXUS_URL + '/step', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body)
+    });
+    const data = await r.json();
+    res.json(data);
+  } catch (err) {
+    res.status(503).json({ error: 'NEXUS offline', fallback: true });
+  }
+});
+
+app.get('/api/nexus/status', async (req, res) => {
+  try {
+    const r = await fetch(NEXUS_URL + '/status');
+    const data = await r.json();
+    res.json({ ...data, nexus_url: NEXUS_URL, online: true });
+  } catch (err) {
+    res.json({ online: false, fallback: true });
+  }
+});
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'dist')));
   
