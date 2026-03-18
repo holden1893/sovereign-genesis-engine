@@ -439,8 +439,8 @@ function extractNarrativeThreads(world: WorldState, allEvents: SimEvent[]): Narr
   const threads: NarrativeThread[] = [];
   const survivors = Array.from(world.agents.values()).filter(a => a.alive);
 
-  const hero = agents.find(a => a.role === 'hero');
-  const villain = agents.find(a => a.role === 'villain');
+  const hero = survivors.find(a => a.role === 'hero');
+  const villain = survivors.find(a => a.role === 'villain');
 
   if (hero) {
     const heroEvents = allEvents.filter(e => e.actorIds.includes(hero.id));
@@ -465,7 +465,7 @@ function extractNarrativeThreads(world: WorldState, allEvents: SimEvent[]): Narr
   }
 
   // Secondary threads — high-weight agents
-  agents
+  survivors
     .filter(a => a.narrativeWeight > 0.5 && a.id !== hero?.id)
     .slice(0, 3)
     .forEach((agent, i) => {
@@ -505,7 +505,7 @@ function synthesizeNarrative(result: Omit<SimulationResult, 'emergentNarrative'>
   const deathEvents = result.keyEvents.filter(e => e.type === 'death').length;
   const discoveries = result.keyEvents.filter(e => e.type === 'discovery').length;
 
-  const agents = Array.from(result.agentHistories.keys());
+  const agentIds = Array.from(result.agentHistories.keys());
   const dominant = result.dominantFaction;
 
   let narrative = '';
