@@ -279,14 +279,19 @@ export default function SimulationVisualizer({ spec }: { spec?: Partial<GameSpec
 
   // Wire sim completion into training loop
   useEffect(() => {
-    const sr = simResult;
+    const survivorCount = simResult.survivorCount;
+    const agentCount = simResult.agentCount;
+    const narrativeThreads = simResult.narrativeThreads;
+    const recommendations = simResult.recommendations;
+    const keyEvents = simResult.keyEvents;
+    const dominantFaction = simResult.dominantFaction;
     recordSimulation({
-      survivorCount: sr.survivorCount,
-      agentCount: sr.agentCount,
-      narrativeThreads: sr.narrativeThreads,
-      recommendations: sr.recommendations,
-      keyEvents: sr.keyEvents,
-      dominantFaction: sr.dominantFaction,
+      survivorCount,
+      agentCount,
+      narrativeThreads,
+      recommendations,
+      keyEvents,
+      dominantFaction,
       genre: defaultSpec.genre,
       setting: defaultSpec.setting,
     });
