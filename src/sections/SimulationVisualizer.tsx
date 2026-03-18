@@ -100,7 +100,7 @@ function runClientSim(spec: GameSpec, agentCount: number, ticks: number) {
     : ["Alex", "Jordan", "Casey", "Morgan", "Riley", "Quinn"];
 
   const roles = ["hero", "villain", "neutral", "merchant", "guardian", "wanderer"] as const;
-  const alignments = ["order", "chaos", "neutral"] as const;
+  const alignments: FactionAlignment[] = ["order", "chaos", "neutral"];
 
   // Spawn agents
   const agents: Agent[] = Array.from({ length: agentCount }, (_, i) => ({
@@ -260,7 +260,7 @@ const EVENT_COLORS: Record<string, string> = {
   betrayal: "#ff6600",
 };
 
-const ROLE_ICONS: Record<string, string> = {
+const _ROLE_ICONS: Record<string, string> = {
   hero: "⬟",
   villain: "◆",
   neutral: "●",
@@ -281,8 +281,8 @@ export default function SimulationVisualizer({ spec }: { spec?: Partial<GameSpec
   const [agentCount] = useState(24);
   const [liveEvents, setLiveEvents] = useState<SimEvent[]>([]);
   const [simResult, setSimResult] = useState<SimResult | null>(null);
-  const [snapshots, setSnapshots] = useState<Agent[][]>([]);
-  const [currentAgents, setCurrentAgents] = useState<Agent[]>([]);
+  const [_snapshots, setSnapshots] = useState<Agent[][]>([]);
+  const [_currentAgents, setCurrentAgents] = useState<Agent[]>([]);
   const tickRef = useRef(0);
   const snapshotsRef = useRef<Agent[][]>([]);
 
