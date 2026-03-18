@@ -8,12 +8,16 @@ through your world, watches factions form and heroes die —
 THEN generates content from what survived.
 
 ## The Architecture
+\`\`\`
 GameSpec → SimulationLayer(N agents) → emergent data
          → GameGenerator(enriched) → GamePackage
+\`\`\`
 
 ## Quick Start
+\`\`\`bash
 npm install
 npm run dev
+\`\`\`
 
 ## Why This Exists
 Every game engine since 1995 generates worlds the same way.
@@ -24,5 +28,5 @@ Nobody simulated first.
 Until now.
 
 ---
-Built with: TypeScript · React · Express · Multi-agent simulation
+Built with: TypeScript · React · Express · Multi-agent simulation  
 Inspired by: MiroFish · OASIS · the gap nobody filled
