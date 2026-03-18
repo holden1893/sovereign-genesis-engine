@@ -67,7 +67,7 @@ function App() {
         <LivePreview
           gamePackage={gamePackage}
           isGenerating={isGenerating}
-          spec={currentSpec}
+          
         />
 
         {/* Simulation visualizer */}
