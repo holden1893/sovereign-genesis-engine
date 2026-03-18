@@ -49,7 +49,7 @@ What are we building?`;
 
 // ─── Parser — extract game spec from natural language ────────
 
-function parseUserInput(input: string, _currentSpec: Partial<GameSpec>): Partial<GameSpec> {
+function parseUserInput(input: string, currentSpec: Partial<GameSpec>): Partial<GameSpec> {
   const lower = input.toLowerCase();
   const updates: Partial<GameSpec> = {};
 
