@@ -279,6 +279,8 @@ export default function SimulationVisualizer({ spec }: { spec?: Partial<GameSpec
 
   // Wire sim completion into training loop
   useEffect(() => {
+    if (!isDone) return;
+    if (simResult === null) return;
     const survivorCount = simResult.survivorCount;
     const agentCount = simResult.agentCount;
     const narrativeThreads = simResult.narrativeThreads;
