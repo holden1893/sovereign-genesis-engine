@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "server": "node server.mjs",
-    "start": "npm run server & npm run dev"
+    "start": "node server.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.78.0",
