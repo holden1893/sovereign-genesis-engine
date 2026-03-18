@@ -437,7 +437,7 @@ function tickAgent(agent: Agent, world: WorldState, config: SimulationConfig, rn
 
 function extractNarrativeThreads(world: WorldState, allEvents: SimEvent[]): NarrativeThread[] {
   const threads: NarrativeThread[] = [];
-  const _agents = Array.from(world.agents.values());
+  const survivors = Array.from(world.agents.values()).filter(a => a.alive);
 
   const hero = agents.find(a => a.role === 'hero');
   const villain = agents.find(a => a.role === 'villain');
