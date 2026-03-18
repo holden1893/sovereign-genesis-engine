@@ -3,8 +3,6 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "node server.mjs",
-    "healthcheckPath": "/api/status",
-    "healthcheckTimeout": 300
+    "startCommand": "node server.mjs"
   }
 }
