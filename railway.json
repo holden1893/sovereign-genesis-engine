@@ -1,4 +1,9 @@
 {
-  "build": "npm run build",
-  "start": "node server.mjs"
+  "build": {
+    "builder": "NIXPACKS"
+  },
+  "deploy": {
+    "startCommand": "node server.mjs",
+    "healthcheckPath": "/api/status"
+  }
 }
