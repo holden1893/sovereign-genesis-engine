@@ -280,12 +280,12 @@ export default function SimulationVisualizer({ spec }: { spec?: Partial<GameSpec
   // Wire sim completion into training loop
   useEffect(() => {
     recordSimulation({
-      survivorCount: simResult.survivorCount,
-      agentCount: simResult.agentCount,
-      narrativeThreads: simResult.narrativeThreads,
-      recommendations: simResult.recommendations,
-      keyEvents: simResult.keyEvents,
-      dominantFaction: simResult.dominantFaction,
+      survivorCount: sr.survivorCount,
+      agentCount: sr.agentCount,
+      narrativeThreads: sr.narrativeThreads,
+      recommendations: sr.recommendations,
+      keyEvents: sr.keyEvents,
+      dominantFaction: sr.dominantFaction,
       genre: defaultSpec.genre,
       setting: defaultSpec.setting,
     });
