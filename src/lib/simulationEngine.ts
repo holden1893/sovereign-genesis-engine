@@ -437,7 +437,7 @@ function tickAgent(agent: Agent, world: WorldState, config: SimulationConfig, rn
 
 function extractNarrativeThreads(world: WorldState, allEvents: SimEvent[]): NarrativeThread[] {
   const threads: NarrativeThread[] = [];
-  const agents = Array.from(world.agents.values());
+  const _agents = Array.from(world.agents.values());
 
   const hero = agents.find(a => a.role === 'hero');
   const villain = agents.find(a => a.role === 'villain');
@@ -731,7 +731,7 @@ function getNamePool(setting: string): string[] {
   return pools[setting] ?? pools['modern'];
 }
 
-function getZoneTemplates(setting: string, genre: string): Array<{ name: string; type: WorldZone['type'] }> {
+function getZoneTemplates(setting: string, _genre: string): Array<{ name: string; type: WorldZone['type'] }> {
   const templates: Record<string, Array<{ name: string; type: WorldZone['type'] }>> = {
     'sci-fi': [
       { name: 'Neon District', type: 'neutral' },
