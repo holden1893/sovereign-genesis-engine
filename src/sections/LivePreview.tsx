@@ -12,7 +12,7 @@ import type { GamePackage, GameSpec } from "@/types/game";
 interface LivePreviewProps {
   gamePackage?: GamePackage | null;
   isGenerating?: boolean;
-  spec?: Partial<GameSpec> | null;
+  _spec?: Partial<GameSpec> | null;
 }
 
 interface Tab {
@@ -548,7 +548,7 @@ function ExportPanel({ game, loading }: { game?: GamePackage; loading?: boolean 
 
 // ─── Main Component ──────────────────────────────────────────
 
-export default function LivePreview({ gamePackage, isGenerating, spec }: LivePreviewProps) {
+export default function LivePreview({ gamePackage, isGenerating }: LivePreviewProps) {
   const [activeTab, setActiveTab] = useState("narrative");
   const prevGame = useRef<GamePackage | null>(null);
 
